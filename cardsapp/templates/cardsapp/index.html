@@ -1,0 +1,21 @@
+{% extends 'cardbase.html' %}
+{% block content %}
+<section class="container mt-3">
+	<div class="d-flex headers grey-text">Dashboard</div>
+	<div class="row row-cols-3 mt-2">
+		{% for deck in decks %}
+		<div class="col d-flex align-items-stretch">
+			<div class="card bg-light flex-fill">
+				<h5 class="card-header">{{ deck.name }}</h5>
+				<div class="card-body">
+					<p class="card-text">{{ deck.description }}</p>
+				</div>
+				<div class="card-footer">
+					<a class="btn btn-primary" href="{% url 'cardsapp:cards' deck=deck.name %}">{{ deck.flashcard_count }} card{{ deck.flashcard_count|pluralize }}</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+{% endblock content %}
